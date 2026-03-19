@@ -18,7 +18,7 @@ def setup_function():
 def test_signup_for_activity_rejects_duplicate_student():
     # Arrange
     activity_name = "Chess Club"
-    duplicate_email = activities[activity_name]["participants"][0]
+    duplicate_email = "michael@mergington.edu"
 
     # Act
     response = client.post(
@@ -51,7 +51,7 @@ def test_signup_for_activity_adds_student_once():
 def test_remove_participant_unregisters_student():
     # Arrange
     activity_name = "Chess Club"
-    email = activities[activity_name]["participants"][0]
+    email = "michael@mergington.edu"
 
     # Act
     response = client.delete(

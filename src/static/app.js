@@ -19,7 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Clear loading message
       activitiesList.innerHTML = "";
-      activitySelect.innerHTML = '<option value="">-- Select an activity --</option>';
+      activitySelect.replaceChildren();
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "-- Select an activity --";
+      activitySelect.appendChild(defaultOption);
 
       // Populate activities list
       Object.entries(activities).forEach(([name, details]) => {
@@ -27,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         activityCard.className = "activity-card";
 
         const spotsLeft = details.max_participants - details.participants.length;
-        const participants = details.participants || [];
+        const participants = details.participants;
         const participantsSection =
           participants.length > 0
             ? `
